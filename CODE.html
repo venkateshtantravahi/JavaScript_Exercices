@@ -1,0 +1,67 @@
+<html>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Rock-Paper-Scissors</title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="">
+        </head>
+    <body>
+        <script>
+            function computerplay(){
+                let number = Math.floor(Math.random() * 3) + 1;
+                if (number == 1){
+                    return 'rock' ;
+                }else if (number == 2){
+                    return 'paper';
+                }else{
+                    return 'scissor';
+                }
+            }
+            function playerturn(){
+                return prompt("select rock,paper or scissors:").toLowerCase();
+            }
+            function play_a_round(playerselection,computerselection){
+                let playerselection = player;
+                while (playerselection === computerselection){
+                    playerselection = prompt("It's a draw , replay your turn! :").toLowerCase;
+                    computerselection = computerplay();
+                }
+                while (playerselection != "rock" && playerselection != "paper" && playerselection != "scissors"){
+                    playerselection = prompt("error! replay your turn you must select one from rock,paper or scissors:").toLowerCase();
+                }
+                console.log( `the computer chose ${computerselection}...`)
+                if (playerselection == 'rock' && computerselection == 'paper' || playerselection == 'rock' && computerselection == 'scissors' || playerselection == 'paper' && computerselection == 'scissors'){
+                    console.log("Hurrah! you won the game");
+                    return "won";
+                }
+                else{
+                    console.log("shit! you lost");
+                    return "lost";
+                }
+            }
+                function game(){
+                    let player_score = 0;
+                    let computer_score = 0;
+                    for(let i=0;i<5;i++){
+                       let  result = play_a_round(playerturn(),computerplay());
+                       if(result = "won"){
+                           player_score += 1;
+                       }
+                        else{
+                           computer_score += 1;
+                       }
+                       total_player_score = player_score - computer_score; 
+                       total_computer_score = computer_score - player_score;
+
+                    }
+                }
+                if(player_score > computer_score){
+                    console.log(`Congratulations! you won  with ${total_player_score} of 5 games`);
+                }else{
+                    console.log(`sorry! you lost with ${total_computer_score} of 5games`);
+                }
+        </script>
+    </body>
+</html>
